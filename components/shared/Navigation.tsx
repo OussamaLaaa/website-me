@@ -23,7 +23,7 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/80 backdrop-blur-lg border-b border-foreground/10'
+          ? 'bg-background/90 backdrop-blur-xl border-b border-gray-200'
           : 'bg-transparent'
       }`}
     >
@@ -32,8 +32,9 @@ export default function Navigation() {
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
-            className="font-display text-xl font-bold text-foreground hover:text-accent
-                     transition-colors duration-300 focus:outline-none focus:text-accent"
+            className="font-sans text-xl font-bold text-foreground hover:text-gray-500
+                     transition-colors duration-300 focus:outline-none focus:text-gray-500
+                     tracking-tighter"
             aria-label="Go to home"
           >
             OL
@@ -44,36 +45,37 @@ export default function Navigation() {
             <li>
               <button
                 onClick={() => scrollToSection('manifesto')}
-                className="text-foreground/70 hover:text-accent transition-colors duration-300
-                         font-medium focus:outline-none focus:text-accent"
+                className="text-gray-500 hover:text-foreground transition-colors duration-300
+                         font-medium focus:outline-none focus:text-foreground text-sm uppercase tracking-wider"
               >
-                Philosophy
+                Principles
               </button>
             </li>
             <li>
               <button
                 onClick={() => scrollToSection('capabilities')}
-                className="text-foreground/70 hover:text-accent transition-colors duration-300
-                         font-medium focus:outline-none focus:text-accent"
+                className="text-gray-500 hover:text-foreground transition-colors duration-300
+                         font-medium focus:outline-none focus:text-foreground text-sm uppercase tracking-wider"
               >
-                Capabilities
+                Work
               </button>
             </li>
             <li>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-foreground/70 hover:text-accent transition-colors duration-300
-                         font-medium focus:outline-none focus:text-accent"
+                className="text-gray-500 hover:text-foreground transition-colors duration-300
+                         font-medium focus:outline-none focus:text-foreground text-sm uppercase tracking-wider"
               >
-                About
+                Profile
               </button>
             </li>
             <li>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-6 py-2 border border-accent text-accent rounded-full
-                         hover:bg-accent hover:text-background transition-all duration-300
-                         font-medium focus:outline-none focus:ring-2 focus:ring-accent"
+                className="px-6 py-2 border border-foreground text-foreground rounded-none
+                         hover:bg-foreground hover:text-background transition-all duration-300
+                         font-medium focus:outline-none focus:ring-2 focus:ring-foreground
+                         text-sm uppercase tracking-wider"
               >
                 Contact
               </button>
@@ -83,9 +85,10 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => scrollToSection('contact')}
-            className="md:hidden px-6 py-2 border border-accent text-accent rounded-full
-                     hover:bg-accent hover:text-background transition-all duration-300
-                     font-medium text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+            className="md:hidden px-6 py-2 border border-foreground text-foreground rounded-none
+                     hover:bg-foreground hover:text-background transition-all duration-300
+                     font-medium text-sm focus:outline-none focus:ring-2 focus:ring-foreground
+                     uppercase tracking-wider"
             aria-label="Contact"
           >
             Contact

@@ -18,17 +18,20 @@ export default function Contact() {
     }
 
     const ctx = gsap.context(() => {
+      // Cinematic reveal with scale and blur
       gsap.from(contentRef.current?.children ?? [], {
         scrollTrigger: {
           trigger: contentRef.current,
-          start: 'top 75%',
+          start: 'top 70%',
           toggleActions: 'play none none reverse',
         },
-        y: 60,
+        y: 100,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
+        scale: 0.95,
+        filter: 'blur(15px)',
+        duration: 1.2,
+        stagger: 0.25,
+        ease: 'power4.out',
       });
     }, sectionRef);
 
@@ -42,90 +45,105 @@ export default function Contact() {
       className="relative min-h-screen flex items-center justify-center px-6 md:px-12
                bg-background overflow-hidden"
     >
-      {/* Background decoration */}
+      {/* Cinematic background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.02]"
+             style={{
+               backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
+               backgroundSize: '100px 100px'
+             }}
+        />
+
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background" />
+
+        {/* Floating geometry */}
+        <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-gray-200 rounded-full animate-float" />
+        <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-gray-300 rounded-full animate-float" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div ref={contentRef} className="max-w-4xl mx-auto text-center space-y-12">
+      <div ref={contentRef} className="max-w-5xl mx-auto text-center space-y-16">
         {/* Title */}
-        <h2 className="font-display text-display md:text-hero font-bold text-gradient">
-          Let's Create Something Exceptional
+        <h2 className="font-sans text-display md:text-hero font-black tracking-tighter text-foreground glow">
+          Let's Build Something Remarkable
         </h2>
 
         {/* Description */}
-        <p className="text-xl md:text-2xl text-foreground/70 leading-relaxed max-w-2xl mx-auto">
-          Whether you're looking for a designer for your next project, seeking a creative
-          collaborator, or considering me for your team—I'd love to hear from you.
+        <p className="text-body-lg md:text-heading-xl text-gray-600 leading-tight font-light max-w-3xl mx-auto tracking-tight">
+          Available for select projects and full-time opportunities
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12">
           <a
             href="mailto:contact@oussamalassoued.com"
-            className="group px-10 py-5 bg-accent text-background font-semibold text-lg
-                     rounded-full hover:bg-accent/90 transition-all duration-300
-                     hover:scale-105 hover:shadow-2xl hover:shadow-accent/20
-                     focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
-                     focus:ring-offset-background"
+            className="group relative px-12 py-6 bg-foreground text-background font-semibold text-lg
+                     rounded-none hover:bg-gray-800 transition-all duration-500
+                     hover:scale-105 hover:tracking-wider
+                     focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-4
+                     focus:ring-offset-background overflow-hidden uppercase tracking-wider"
             aria-label="Send email to Oussama"
           >
-            Send Email
+            <span className="relative z-10">Send Email</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100 to-transparent opacity-0 group-hover:opacity-20 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           </a>
 
           <a
             href="https://linkedin.com/in/oussamalassoued"
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-10 py-5 border-2 border-accent text-accent font-semibold
-                     text-lg rounded-full hover:bg-accent hover:text-background
-                     transition-all duration-300 hover:scale-105
-                     focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2
-                     focus:ring-offset-background"
+            className="group px-12 py-6 border-2 border-foreground text-foreground font-semibold
+                     text-lg rounded-none hover:bg-foreground hover:text-background
+                     transition-all duration-500 hover:scale-105 hover:tracking-wider
+                     focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-4
+                     focus:ring-offset-background uppercase tracking-wider"
             aria-label="Visit LinkedIn profile"
           >
-            LinkedIn
+            <span className="relative z-10">LinkedIn</span>
           </a>
         </div>
 
-        {/* Social Links Placeholder */}
-        <div className="pt-12 space-y-4">
-          <p className="text-foreground/40 text-sm uppercase tracking-widest">
+        {/* Social Links */}
+        <div className="pt-16 space-y-6 border-t border-gray-200">
+          <p className="text-gray-500 text-xs uppercase tracking-[0.4em] font-medium">
             Connect
           </p>
-          <div className="flex justify-center gap-8">
+          <div className="flex justify-center gap-10">
             <a
               href="#"
-              className="text-foreground/60 hover:text-accent transition-colors duration-300
-                       focus:outline-none focus:text-accent"
+              className="text-gray-500 hover:text-foreground transition-colors duration-500
+                       focus:outline-none focus:text-foreground text-sm uppercase tracking-wider font-medium"
               aria-label="Behance profile"
             >
-              <span className="text-sm font-medium">Behance</span>
+              Behance
             </a>
             <a
               href="#"
-              className="text-foreground/60 hover:text-accent transition-colors duration-300
-                       focus:outline-none focus:text-accent"
+              className="text-gray-500 hover:text-foreground transition-colors duration-500
+                       focus:outline-none focus:text-foreground text-sm uppercase tracking-wider font-medium"
               aria-label="Dribbble profile"
             >
-              <span className="text-sm font-medium">Dribbble</span>
+              Dribbble
             </a>
             <a
               href="#"
-              className="text-foreground/60 hover:text-accent transition-colors duration-300
-                       focus:outline-none focus:text-accent"
+              className="text-gray-500 hover:text-foreground transition-colors duration-500
+                       focus:outline-none focus:text-foreground text-sm uppercase tracking-wider font-medium"
               aria-label="Twitter profile"
             >
-              <span className="text-sm font-medium">Twitter</span>
+              Twitter
             </a>
           </div>
         </div>
 
-        {/* Footer note */}
-        <div className="pt-20 border-t border-foreground/10">
-          <p className="text-foreground/40 text-sm">
-            © 2026 Oussama Lassoued. Designed with intention, built with craft.
+        {/* Footer */}
+        <div className="pt-24">
+          <p className="text-gray-500 text-xs uppercase tracking-[0.3em] font-medium">
+            © 2026 Oussama Lassoued
+          </p>
+          <p className="text-gray-400 text-xs mt-2 font-light">
+            Designed with intention, built with craft
           </p>
         </div>
       </div>
