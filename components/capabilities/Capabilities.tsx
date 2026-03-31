@@ -47,36 +47,69 @@ export default function Capabilities() {
     }
 
     const ctx = gsap.context(() => {
-      // Title animation with scale
-      gsap.from(titleRef.current, {
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+      // CINEMATIC TITLE ENTRANCE with depth
+      gsap.fromTo(
+        titleRef.current,
+        {
+          y: 100,
+          opacity: 0,
+          scale: 0.92,
+          filter: 'blur(12px)',
         },
-        y: 80,
-        opacity: 0,
-        scale: 0.95,
-        filter: 'blur(10px)',
-        duration: 1.2,
-        ease: 'power4.out',
-      });
+        {
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: 'top 85%',
+            end: 'top 55%',
+            scrub: 1.5,
+          },
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+          ease: 'power2.out',
+        }
+      );
 
-      // Grid cards animation with blur
+      // GRID CARDS - Cinematic staggered entrance with parallax
       const cards = gridRef.current?.children;
       if (cards) {
-        gsap.from(cards, {
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse',
-          },
-          y: 80,
-          opacity: 0,
-          filter: 'blur(10px)',
-          duration: 1,
-          stagger: 0.12,
-          ease: 'power4.out',
+        Array.from(cards).forEach((card, index) => {
+          // Main entrance animation
+          gsap.fromTo(
+            card,
+            {
+              y: 120,
+              opacity: 0,
+              filter: 'blur(10px)',
+              scale: 0.92,
+            },
+            {
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 90%',
+                end: 'top 65%',
+                scrub: 1.2,
+              },
+              y: 0,
+              opacity: 1,
+              filter: 'blur(0px)',
+              scale: 1,
+              ease: 'power2.out',
+            }
+          );
+
+          // Layered parallax for spatial depth
+          gsap.to(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 2.5,
+            },
+            y: -20 * ((index % 3) + 1), // Different speeds for depth
+            ease: 'none',
+          });
         });
       }
     }, sectionRef);
@@ -90,6 +123,12 @@ export default function Capabilities() {
       id="capabilities"
       className="relative py-section px-6 md:px-12 bg-background"
     >
+      {/* Atmospheric background elements */}
+      <div className="absolute inset-0 -z-10 opacity-10">
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 border border-gray-100 rounded-full" />
+        <div className="absolute bottom-1/4 left-1/3 w-32 h-32 border border-gray-100 rounded-full" />
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <h2
           ref={titleRef}
@@ -110,25 +149,33 @@ export default function Capabilities() {
               className="group relative p-12 md:p-14 bg-background
                        border border-gray-200 rounded-none overflow-hidden
                        transition-all duration-700 hover:bg-gray-50
-                       hover:border-foreground hover:z-10
+                       hover:border-foreground hover:z-10 hover:shadow-2xl
                        focus-within:ring-2 focus-within:ring-foreground"
               tabIndex={0}
               role="article"
               aria-label={capability.title}
             >
               {/* Animated corner accent */}
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-foreground transition-all duration-700 opacity-0 group-hover:opacity-100" />
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent 
+                            group-hover:border-foreground transition-all duration-700 opacity-0 
+                            group-hover:opacity-100" />
+
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700
+                            bg-gradient-radial from-gray-100/20 via-transparent to-transparent" />
 
               {/* Content */}
               <div className="relative z-10">
                 <div className="mb-8">
-                  <span className="text-xs font-medium tracking-[0.3em] uppercase text-gray-400 group-hover:text-gray-600 transition-colors duration-500">
+                  <span className="text-xs font-medium tracking-[0.3em] uppercase text-gray-400 
+                               group-hover:text-gray-600 transition-colors duration-500">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
 
                 <h3 className="font-sans text-2xl md:text-3xl font-bold mb-6 text-foreground
-                             tracking-tight leading-tight">
+                             tracking-tight leading-tight transition-all duration-500
+                             group-hover:tracking-tight group-hover:translate-x-0.5">
                   {capability.title}
                 </h3>
 
@@ -138,7 +185,8 @@ export default function Capabilities() {
                 </p>
 
                 {/* Subtle hover indicator */}
-                <div className="absolute bottom-12 left-12 w-8 h-px bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+                <div className="absolute bottom-12 left-12 w-8 h-px bg-foreground transform scale-x-0 
+                             group-hover:scale-x-100 transition-transform duration-700 origin-left" />
               </div>
             </article>
           ))}
