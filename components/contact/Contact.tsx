@@ -67,12 +67,9 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative min-h-screen flex items-center justify-center px-6 md:px-12
-               bg-background overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-6 md:px-12 bg-background overflow-hidden"
     >
-      {/* Cinematic background elements with more atmosphere */}
       <div className="absolute inset-0 -z-10">
-        {/* Refined grid pattern */}
         <div className="absolute inset-0 opacity-[0.015]"
              style={{
                backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
@@ -80,12 +77,10 @@ export default function Contact() {
              }}
         />
 
-        {/* Radial gradients for depth */}
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] 
-                      bg-gradient-radial from-gray-100/5 via-transparent to-transparent rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] 
+                      bg-gradient-radial from-gray-100/10 via-transparent to-transparent rounded-full" />
 
-        {/* Floating geometry with better spacing */}
         <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-gray-200 rounded-full animate-float opacity-40" />
         <div className="absolute bottom-1/3 right-1/3 w-1.5 h-1.5 bg-gray-300 rounded-full animate-float opacity-30" 
              style={{ animationDelay: '1s' }} />
@@ -94,22 +89,19 @@ export default function Contact() {
       </div>
 
       <div ref={contentRef} className="max-w-5xl mx-auto text-center space-y-16">
-        {/* Title with enhanced presence */}
         <h2 className="font-sans text-display md:text-hero font-black tracking-tighter text-foreground glow">
-          Let's Create Something Exceptional
+          Let&apos;s Create Something Exceptional
         </h2>
 
-        {/* Description */}
         <p className="text-body-lg md:text-heading-xl text-gray-600 leading-tight font-light max-w-3xl mx-auto tracking-tight">
-          Whether you're looking for a designer for your next project, seeking a creative collaborator, or considering me for your team—I'd love to hear from you.
+          Whether you&apos;re looking for a designer for your next project, seeking a creative collaborator, or considering me for your team—I&apos;d love to hear from you.
         </p>
 
-        {/* CTA Buttons with enhanced hover states */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12">
           <a
             href="mailto:contact@oussamalassoued.com"
             className="group relative px-12 py-6 bg-foreground text-background font-semibold text-lg
-                     rounded-none hover:bg-gray-800 transition-all duration-500
+                     rounded-none hover:bg-white transition-all duration-500
                      hover:scale-105 hover:tracking-wider hover:shadow-2xl
                      focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-4
                      focus:ring-offset-background overflow-hidden uppercase tracking-wider"
@@ -117,7 +109,7 @@ export default function Contact() {
           >
             <span className="relative z-10">Send Email</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100 to-transparent 
-                          opacity-0 group-hover:opacity-20 transform translate-x-[-100%] 
+                          opacity-0 group-hover:opacity-25 transform translate-x-[-100%] 
                           group-hover:translate-x-[100%] transition-transform duration-1000" />
           </a>
 
@@ -136,14 +128,15 @@ export default function Contact() {
           </a>
         </div>
 
-        {/* Social Links */}
-        <div className="pt-16 space-y-6 border-t border-gray-200">
+        <div className="pt-16 space-y-6 border-t border-gray-200/30">
           <p className="text-gray-500 text-xs uppercase tracking-[0.4em] font-medium">
             Connect
           </p>
           <div className="flex justify-center gap-10">
             <a
-              href="#"
+              href="https://www.behance.net/oussamalassoued"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-500 hover:text-foreground transition-all duration-500
                        focus:outline-none focus:text-foreground text-sm uppercase tracking-wider font-medium
                        hover:translate-y-[-2px]"
@@ -152,7 +145,9 @@ export default function Contact() {
               Behance
             </a>
             <a
-              href="#"
+              href="https://dribbble.com/oussamalassoued"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-500 hover:text-foreground transition-all duration-500
                        focus:outline-none focus:text-foreground text-sm uppercase tracking-wider font-medium
                        hover:translate-y-[-2px]"
@@ -161,7 +156,9 @@ export default function Contact() {
               Dribbble
             </a>
             <a
-              href="#"
+              href="https://twitter.com/oussamalassoued"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-500 hover:text-foreground transition-all duration-500
                        focus:outline-none focus:text-foreground text-sm uppercase tracking-wider font-medium
                        hover:translate-y-[-2px]"
@@ -172,7 +169,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="pt-24">
           <p className="text-gray-500 text-xs uppercase tracking-[0.3em] font-medium">
             © 2026 Oussama Lassoued

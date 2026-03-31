@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -37,7 +37,6 @@ export default function Capabilities() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,11 +46,10 @@ export default function Capabilities() {
     }
 
     const ctx = gsap.context(() => {
-      // CINEMATIC TITLE ENTRANCE with depth
       gsap.fromTo(
         titleRef.current,
         {
-          y: 100,
+          y: 90,
           opacity: 0,
           scale: 0.92,
           filter: 'blur(12px)',
@@ -61,21 +59,19 @@ export default function Capabilities() {
             trigger: titleRef.current,
             start: 'top 85%',
             end: 'top 55%',
-            scrub: 1.5,
+            scrub: 1.4,
           },
           y: 0,
           opacity: 1,
           scale: 1,
           filter: 'blur(0px)',
           ease: 'power2.out',
-        }
+        },
       );
 
-      // GRID CARDS - Cinematic staggered entrance with parallax
       const cards = gridRef.current?.children;
       if (cards) {
         Array.from(cards).forEach((card, index) => {
-          // Main entrance animation
           gsap.fromTo(
             card,
             {
@@ -96,18 +92,17 @@ export default function Capabilities() {
               filter: 'blur(0px)',
               scale: 1,
               ease: 'power2.out',
-            }
+            },
           );
 
-          // Layered parallax for spatial depth
           gsap.to(card, {
             scrollTrigger: {
               trigger: card,
               start: 'top bottom',
               end: 'bottom top',
-              scrub: 2.5,
+              scrub: 2.4,
             },
-            y: -20 * ((index % 3) + 1), // Different speeds for depth
+            y: -20 * ((index % 3) + 1),
             ease: 'none',
           });
         });
@@ -121,81 +116,75 @@ export default function Capabilities() {
     <section
       ref={sectionRef}
       id="capabilities"
-      className="relative py-section px-6 md:px-12 bg-background"
+      className="relative py-section px-6 md:px-12 bg-background overflow-hidden"
     >
-      {/* Atmospheric background elements */}
       <div className="absolute inset-0 -z-10 opacity-10">
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px)',
+            backgroundSize: '140px 140px',
+          }}
+        />
         <div className="absolute top-1/3 right-1/4 w-64 h-64 border border-gray-100 rounded-full" />
         <div className="absolute bottom-1/4 left-1/3 w-32 h-32 border border-gray-100 rounded-full" />
       </div>
 
-      <div className="max-w-7xl mx-auto">
-        <h2
-          ref={titleRef}
-          className="font-sans text-display font-black text-center mb-24 md:mb-32 tracking-tighter uppercase"
-        >
-          Capabilities
-        </h2>
+      <div className="max-w-7xl mx-auto space-y-12">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <div className="text-xs uppercase tracking-[0.35em] text-gray-500">Core Expertise</div>
+          <h2
+            ref={titleRef}
+            className="font-sans text-display font-black text-foreground tracking-tighter uppercase"
+          >
+            Capabilities
+          </h2>
+          <p className="text-body-lg text-gray-600 max-w-3xl">
+            A versatile toolkit shaped by product strategy, motion design, and systems thinking to keep brands cohesive and interfaces alive.
+          </p>
+        </div>
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-1"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {capabilities.map((capability, index) => (
             <article
-              key={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative p-12 md:p-14 bg-background
-                       border border-gray-200 rounded-none overflow-hidden
-                       transition-all duration-700 hover:bg-gray-50
-                       hover:border-foreground hover:z-10 hover:shadow-2xl
-                       focus-within:ring-2 focus-within:ring-foreground"
+              key={capability.title}
+              className="group relative p-12 bg-background/60 border border-gray-200/30 overflow-hidden
+                       transition-all duration-700 hover:bg-white/5 hover:border-foreground/60
+                       hover:shadow-[0_20px_80px_rgba(255,255,255,0.08)] focus-within:ring-2 focus-within:ring-foreground"
               tabIndex={0}
               role="article"
               aria-label={capability.title}
             >
-              {/* Animated corner accent */}
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent 
-                            group-hover:border-foreground transition-all duration-700 opacity-0 
-                            group-hover:opacity-100" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-radial from-white/10 via-transparent to-transparent" />
+              <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-white/30" />
+              <div className="absolute bottom-0 left-0 w-16 h-16 border-b border-l border-white/20" />
 
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700
-                            bg-gradient-radial from-gray-100/20 via-transparent to-transparent" />
-
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="mb-8">
-                  <span className="text-xs font-medium tracking-[0.3em] uppercase text-gray-400 
-                               group-hover:text-gray-600 transition-colors duration-500">
+              <div className="relative z-10 space-y-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium tracking-[0.3em] uppercase text-gray-400">
                     {String(index + 1).padStart(2, '0')}
                   </span>
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
                 </div>
 
-                <h3 className="font-sans text-2xl md:text-3xl font-bold mb-6 text-foreground
-                             tracking-tight leading-tight transition-all duration-500
-                             group-hover:tracking-tight group-hover:translate-x-0.5">
+                <h3 className="font-sans text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight transition-transform duration-500 group-hover:translate-x-1">
                   {capability.title}
                 </h3>
 
-                <p className="text-body text-gray-600 leading-relaxed group-hover:text-gray-800
-                            transition-colors duration-500 font-light">
+                <p className="text-body text-gray-600 leading-relaxed transition-colors duration-500 group-hover:text-gray-200">
                   {capability.description}
                 </p>
-
-                {/* Subtle hover indicator */}
-                <div className="absolute bottom-12 left-12 w-8 h-px bg-foreground transform scale-x-0 
-                             group-hover:scale-x-100 transition-transform duration-700 origin-left" />
               </div>
             </article>
           ))}
         </div>
 
-        {/* Future work section */}
-        <div className="mt-24 text-center border-t border-gray-200 pt-12">
+        <div className="mt-10 text-center border-t border-gray-200/30 pt-10">
           <p className="text-gray-500 text-sm uppercase tracking-[0.3em] font-medium">
-            Selected case studies coming soon
+            Curated case studies available on request
           </p>
         </div>
       </div>
