@@ -1,24 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-/* CSS Variables for theme */
+/* CSS Variables for theme - STRICT MONOCHROME */
 :root {
-  --background: #0a0a0a;
-  --foreground: #f5f5f5;
-  --accent: #d4a574;
-  --accent-muted: #8b7355;
+  --background: #000000;
+  --foreground: #ffffff;
+  --gray-50: rgba(255, 255, 255, 0.05);
+  --gray-100: rgba(255, 255, 255, 0.1);
+  --gray-200: rgba(255, 255, 255, 0.2);
+  --gray-300: rgba(255, 255, 255, 0.3);
+  --gray-400: rgba(255, 255, 255, 0.4);
+  --gray-500: rgba(255, 255, 255, 0.5);
+  --gray-600: rgba(255, 255, 255, 0.6);
+  --gray-700: rgba(255, 255, 255, 0.7);
+  --gray-800: rgba(255, 255, 255, 0.8);
+  --gray-900: rgba(255, 255, 255, 0.9);
 
-  /* Typography - Using system fonts for now */
-  --font-display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Typography - Inter only */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-muted: var(--accent-muted);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --font-sans: var(--font-sans);
 }
 
 * {
@@ -36,9 +51,11 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   overflow-x: hidden;
   position: relative;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
 }
 
 /* Grain texture overlay */
@@ -71,7 +88,7 @@ body::before {
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Monochrome */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -81,23 +98,23 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-muted);
+  background: var(--gray-300);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--gray-500);
 }
 
-/* Selection */
+/* Selection - Monochrome */
 ::selection {
-  background: var(--accent);
+  background: var(--foreground);
   color: var(--background);
 }
 
-/* Focus visible for accessibility */
+/* Focus visible for accessibility - Monochrome */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--foreground);
   outline-offset: 4px;
 }
 
@@ -118,19 +135,33 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Text gradient utilities */
+/* Text gradient utilities - Monochrome */
 .text-gradient {
-  background: linear-gradient(135deg, var(--foreground) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--gray-400) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Glow effect */
+/* Glow effect - Monochrome */
 .glow {
-  text-shadow: 0 0 40px rgba(212, 165, 116, 0.3);
+  text-shadow: 0 0 60px rgba(255, 255, 255, 0.3), 0 0 120px rgba(255, 255, 255, 0.15);
 }
 
 .glow-box {
-  box-shadow: 0 0 60px rgba(212, 165, 116, 0.15);
+  box-shadow: 0 0 80px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Cinematic utilities */
+.scene-transition {
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.backdrop-cinematic {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
