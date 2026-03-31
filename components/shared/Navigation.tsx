@@ -44,16 +44,16 @@ export default function Navigation() {
           <ul className="hidden md:flex items-center gap-8">
             <li>
               <button
-                onClick={() => scrollToSection('manifesto')}
+                onClick={() => scrollToSection('studio')}
                 className="text-gray-500 hover:text-foreground transition-colors duration-300
                          font-medium focus:outline-none focus:text-foreground text-sm uppercase tracking-wider"
               >
-                Principles
+                Studio
               </button>
             </li>
             <li>
               <button
-                onClick={() => scrollToSection('capabilities')}
+                onClick={() => scrollToSection('work')}
                 className="text-gray-500 hover:text-foreground transition-colors duration-300
                          font-medium focus:outline-none focus:text-foreground text-sm uppercase tracking-wider"
               >
@@ -62,11 +62,11 @@ export default function Navigation() {
             </li>
             <li>
               <button
-                onClick={() => scrollToSection('about')}
+                onClick={() => scrollToSection('process')}
                 className="text-gray-500 hover:text-foreground transition-colors duration-300
                          font-medium focus:outline-none focus:text-foreground text-sm uppercase tracking-wider"
               >
-                Profile
+                Process
               </button>
             </li>
             <li>
