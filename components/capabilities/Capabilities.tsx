@@ -9,27 +9,27 @@ gsap.registerPlugin(ScrollTrigger);
 const capabilities = [
   {
     title: 'UI/UX Design',
-    description: 'Crafting intuitive interfaces that balance beauty with usability, ensuring every interaction feels natural and purposeful.',
+    description: 'Intuitive interfaces where beauty serves usability, ensuring every interaction feels natural and purposeful.',
   },
   {
     title: 'Visual Design',
-    description: 'Creating compelling visual systems that communicate brand identity and establish emotional connections with users.',
+    description: 'Compelling visual systems that communicate brand identity and establish emotional connections.',
   },
   {
     title: 'Brand-Driven Interfaces',
-    description: 'Translating brand values into cohesive digital experiences that resonate with target audiences.',
+    description: 'Translating brand values into cohesive digital experiences that resonate with audiences.',
   },
   {
     title: 'Motion & Interaction',
-    description: 'Designing micro-interactions and animations that guide users and bring interfaces to life with purpose.',
+    description: 'Micro-interactions and animations that guide users and bring interfaces to life with purpose.',
   },
   {
     title: 'Design Systems',
-    description: 'Building scalable design frameworks that ensure consistency and efficiency across digital products.',
+    description: 'Scalable frameworks that ensure consistency and efficiency across digital products.',
   },
   {
     title: 'Digital Storytelling',
-    description: 'Weaving narrative into interfaces to create memorable experiences that users want to explore and share.',
+    description: 'Weaving narrative into interfaces to create memorable experiences worth exploring.',
   },
 ];
 
@@ -47,20 +47,22 @@ export default function Capabilities() {
     }
 
     const ctx = gsap.context(() => {
-      // Title animation
+      // Title animation with scale
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: titleRef.current,
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
-        y: 60,
+        y: 80,
         opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
+        scale: 0.95,
+        filter: 'blur(10px)',
+        duration: 1.2,
+        ease: 'power4.out',
       });
 
-      // Grid cards animation
+      // Grid cards animation with blur
       const cards = gridRef.current?.children;
       if (cards) {
         gsap.from(cards, {
@@ -69,11 +71,12 @@ export default function Capabilities() {
             start: 'top 75%',
             toggleActions: 'play none none reverse',
           },
-          y: 60,
+          y: 80,
           opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
+          filter: 'blur(10px)',
+          duration: 1,
+          stagger: 0.12,
+          ease: 'power4.out',
         });
       }
     }, sectionRef);
@@ -90,61 +93,61 @@ export default function Capabilities() {
       <div className="max-w-7xl mx-auto">
         <h2
           ref={titleRef}
-          className="font-display text-display font-bold text-center mb-20"
+          className="font-sans text-display font-black text-center mb-24 md:mb-32 tracking-tighter uppercase"
         >
-          Capabilities
+          What I Do
         </h2>
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-1"
         >
           {capabilities.map((capability, index) => (
             <article
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative p-8 md:p-10 bg-foreground/5 backdrop-blur-sm
-                       border border-foreground/10 rounded-2xl overflow-hidden
-                       transition-all duration-500 hover:bg-foreground/10
-                       hover:border-accent/50 hover:scale-[1.02]
-                       focus-within:ring-2 focus-within:ring-accent"
+              className="group relative p-12 md:p-14 bg-background
+                       border border-gray-200 rounded-none overflow-hidden
+                       transition-all duration-700 hover:bg-gray-50
+                       hover:border-foreground hover:z-10
+                       focus-within:ring-2 focus-within:ring-foreground"
               tabIndex={0}
               role="article"
               aria-label={capability.title}
             >
-              {/* Background glow effect */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent
-                           opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                           ${hoveredIndex === index ? 'blur-xl' : ''}`}
-              />
+              {/* Animated corner accent */}
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-foreground transition-all duration-700 opacity-0 group-hover:opacity-100" />
 
               {/* Content */}
               <div className="relative z-10">
-                <h3 className="font-display text-2xl font-semibold mb-4 text-foreground
-                             group-hover:text-accent transition-colors duration-300">
+                <div className="mb-8">
+                  <span className="text-xs font-medium tracking-[0.3em] uppercase text-gray-400 group-hover:text-gray-600 transition-colors duration-500">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <h3 className="font-sans text-2xl md:text-3xl font-bold mb-6 text-foreground
+                             tracking-tight leading-tight">
                   {capability.title}
                 </h3>
 
-                <p className="text-foreground/60 leading-relaxed group-hover:text-foreground/80
-                            transition-colors duration-300">
+                <p className="text-body text-gray-600 leading-relaxed group-hover:text-gray-800
+                            transition-colors duration-500 font-light">
                   {capability.description}
                 </p>
 
-                {/* Decorative element */}
-                <div className="absolute top-6 right-6 w-12 h-12 border-2 border-accent/20
-                              rounded-full group-hover:scale-110 group-hover:border-accent/50
-                              transition-all duration-500" />
+                {/* Subtle hover indicator */}
+                <div className="absolute bottom-12 left-12 w-8 h-px bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
               </div>
             </article>
           ))}
         </div>
 
         {/* Future work section */}
-        <div className="mt-20 text-center">
-          <p className="text-foreground/50 text-lg italic">
-            Selected case studies coming soon
+        <div className="mt-24 text-center border-t border-gray-200 pt-12">
+          <p className="text-gray-500 text-sm uppercase tracking-[0.3em] font-medium">
+            Case studies in development
           </p>
         </div>
       </div>
