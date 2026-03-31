@@ -110,6 +110,7 @@ export default function About() {
               },
               x: 0,
               opacity: 1,
+              delay: index * 0.05,
               ease: 'power2.out',
             }
           );
@@ -124,51 +125,60 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-section px-6 md:px-12 bg-background"
+      className="relative py-section px-6 md:px-12 bg-background overflow-hidden"
     >
-      {/* Cinematic background atmosphere */}
       <div className="absolute inset-0 -z-10 opacity-10">
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px)',
+            backgroundSize: '140px 140px',
+          }}
+        />
         <div className="absolute top-1/4 right-1/5 w-96 h-96 border border-gray-100 rounded-full" />
         <div className="absolute bottom-1/3 left-1/4 w-48 h-48 border border-gray-100 rounded-full" />
       </div>
 
-      <div className="max-w-6xl mx-auto">
-        <h2
-          ref={titleRef}
-          className="font-sans text-display font-black mb-20 md:mb-32 tracking-tighter uppercase text-center"
-        >
-          About Me
-        </h2>
+      <div className="max-w-6xl mx-auto space-y-14">
+        <div className="text-center space-y-4">
+          <div className="text-xs uppercase tracking-[0.35em] text-gray-500">Profile</div>
+          <h2
+            ref={titleRef}
+            className="font-sans text-display font-black tracking-tighter uppercase text-center"
+          >
+            About Me
+          </h2>
+          <p className="text-body-lg text-gray-600 max-w-3xl mx-auto">
+            A multidisciplinary designer weaving together research, visual craft, and motion to build interfaces that feel inevitable.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-[1.5fr,1fr] gap-16 md:gap-24 items-start">
-          {/* Content */}
+        <div className="grid md:grid-cols-[1.5fr,1fr] gap-16 md:gap-20 items-start">
           <div ref={contentRef} className="space-y-8">
             <p className="text-body-lg text-gray-600 leading-relaxed font-light">
-              I'm a UI/UX designer with a passion for creating digital experiences that blend aesthetic vision with functional excellence. My approach combines creative exploration with strategic thinking to craft interfaces that feel both beautiful and intuitive.
+              I&apos;m a UI/UX designer with a passion for creating digital experiences that blend aesthetic vision with functional excellence. My approach combines creative exploration with strategic thinking to craft interfaces that feel both beautiful and intuitive.
             </p>
 
             <p className="text-body-lg text-gray-600 leading-relaxed font-light">
-              With a background in multimedia and digital communication, I bring a multidisciplinary perspective to every project. I believe the best designs emerge from curiosity, collaboration, and a deep understanding of the people we're designing for.
+              With a background in multimedia and digital communication, I bring a multidisciplinary perspective to every project. I believe the best designs emerge from curiosity, collaboration, and a deep understanding of the people we&apos;re designing for.
             </p>
 
             <p className="text-body-lg text-gray-600 leading-relaxed font-light">
-              My work spans visual design, user experience, and motion-aware interfaces. I'm particularly drawn to projects that challenge convention and push the boundaries of what digital experiences can be—where technology becomes an invisible partner in human interaction.
+              My work spans visual design, user experience, and motion-aware interfaces. I&apos;m particularly drawn to projects that challenge convention and push the boundaries of what digital experiences can be—where technology becomes an invisible partner in human interaction.
             </p>
 
-            <div className="pt-8 border-t border-gray-200">
+            <div className="pt-8 border-t border-gray-200/40">
               <p className="text-body font-medium text-foreground leading-relaxed">
                 Currently open to freelance projects, collaborative opportunities, and full-time positions where I can contribute to building meaningful digital products.
               </p>
             </div>
           </div>
 
-          {/* Highlights */}
           <div className="relative">
-            {/* Decorative elements with subtle animation */}
             <div className="absolute -top-12 -right-12 w-32 h-32 border border-gray-100 rounded-full opacity-20" />
             <div className="absolute -bottom-8 -left-8 w-24 h-24 border border-gray-100 rounded-full opacity-15" />
 
-            <div className="relative border-l-2 border-foreground pl-8 md:pl-10">
+            <div className="relative border-l-2 border-foreground pl-8 md:pl-10 bg-white/5 backdrop-cinematic">
               <h3 className="font-sans text-xl font-bold mb-8 text-foreground uppercase tracking-wider">
                 Key Strengths
               </h3>
@@ -179,12 +189,10 @@ export default function About() {
                     key={index}
                     className="flex items-start gap-4 text-gray-600 group"
                   >
-                    <span className="text-xs font-medium text-gray-400 mt-1 group-hover:text-foreground 
-                                   transition-colors duration-300">
+                    <span className="text-xs font-medium text-gray-400 mt-1 group-hover:text-foreground transition-colors duration-300">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-body font-light leading-relaxed group-hover:text-foreground 
-                                   transition-all duration-300 group-hover:translate-x-1">
+                    <span className="text-body font-light leading-relaxed group-hover:text-foreground transition-all duration-300 group-hover:translate-x-1">
                       {highlight}
                     </span>
                   </li>

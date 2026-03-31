@@ -113,56 +113,59 @@ export default function Manifesto() {
     <section
       ref={sectionRef}
       id="manifesto"
-      className="relative py-section px-6 md:px-12 bg-background"
+      className="relative py-section px-6 md:px-12 bg-background overflow-hidden"
     >
-      {/* Cinematic background decoration with parallax */}
-      <div className="absolute inset-0 -z-10 opacity-20">
-        <div className="absolute top-1/4 left-0 w-1 h-32 bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
-        <div className="absolute bottom-1/4 right-0 w-1 h-32 bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
-        {/* Additional depth lines */}
+      <div className="absolute inset-0 -z-10 opacity-15">
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(#ffffff10 1px, transparent 1px), linear-gradient(90deg, #ffffff10 1px, transparent 1px)',
+            backgroundSize: '120px 120px',
+          }}
+        />
+        <div className="absolute top-1/4 left-0 w-px h-32 bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
+        <div className="absolute bottom-1/4 right-0 w-px h-32 bg-gradient-to-b from-transparent via-gray-200 to-transparent" />
         <div className="absolute top-1/2 left-1/3 w-px h-24 bg-gradient-to-b from-transparent via-gray-100 to-transparent" />
         <div className="absolute top-2/3 right-1/4 w-px h-16 bg-gradient-to-b from-transparent via-gray-100 to-transparent" />
       </div>
 
-      <div className="max-w-6xl mx-auto">
-        <h2
-          ref={titleRef}
-          className="font-sans text-display font-black text-center mb-24 md:mb-40 tracking-tighter uppercase"
-        >
-          Design Philosophy
-        </h2>
+      <div className="max-w-6xl mx-auto space-y-16">
+        <div className="text-center space-y-4">
+          <div className="text-xs uppercase tracking-[0.35em] text-gray-500">Principles</div>
+          <h2
+            ref={titleRef}
+            className="font-sans text-display font-black text-center tracking-tighter uppercase"
+          >
+            Design Philosophy
+          </h2>
+          <p className="text-body-lg text-gray-600 max-w-3xl mx-auto">
+            A manifesto for thoughtful, cinematic digital spaces—balancing beauty, purpose, and empathy in every interaction.
+          </p>
+        </div>
 
         <div ref={principlesRef} className="space-y-20 md:space-y-32">
           {principles.map((principle, index) => (
             <article
               key={index}
               className="group grid md:grid-cols-[1fr,2fr] gap-10 md:gap-16 items-start 
-                       border-l-2 border-transparent hover:border-foreground 
-                       transition-all duration-700 pl-0 md:pl-8"
+                       border-l border-gray-200/30 hover:border-foreground/60 
+                       transition-all duration-700 pl-4 md:pl-10 bg-white/5 backdrop-cinematic"
             >
               <div className="relative">
-                <span className="text-7xl md:text-9xl font-sans text-gray-100 font-black leading-none tracking-tighter
-                               transition-all duration-700 group-hover:text-gray-200">
+                <span className="text-7xl md:text-9xl font-sans text-gray-100 font-black leading-none tracking-tighter transition-all duration-700 group-hover:text-gray-200">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-sans text-heading-xl font-bold mt-6 text-foreground tracking-tight
-                             transition-all duration-500 group-hover:tracking-tight group-hover:translate-x-1">
+                <h3 className="font-sans text-heading-xl font-bold mt-6 text-foreground tracking-tight transition-all duration-500 group-hover:tracking-tight group-hover:translate-x-1">
                   {principle.title}
                 </h3>
               </div>
 
               <div className="relative flex items-center min-h-[200px]">
-                <p className="text-body-lg text-gray-600 leading-relaxed font-light
-                            transition-all duration-500 group-hover:text-gray-700">
+                <p className="text-body-lg text-gray-600 leading-relaxed font-light transition-all duration-500 group-hover:text-gray-200">
                   {principle.description}
                 </p>
 
-                {/* Animated hover line decoration */}
-                <div
-                  className="absolute -left-8 top-0 bottom-0 w-px bg-gradient-to-b
-                           from-transparent via-foreground to-transparent opacity-0
-                           group-hover:opacity-100 transition-opacity duration-700"
-                />
+                <div className="absolute -left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-foreground to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
             </article>
           ))}
