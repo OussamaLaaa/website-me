@@ -9,27 +9,27 @@ gsap.registerPlugin(ScrollTrigger);
 const capabilities = [
   {
     title: 'UI/UX Design',
-    description: 'Intuitive interfaces where beauty serves usability, ensuring every interaction feels natural and purposeful.',
+    description: 'Crafting intuitive interfaces that balance beauty with usability, ensuring every interaction feels natural and purposeful.',
   },
   {
     title: 'Visual Design',
-    description: 'Compelling visual systems that communicate brand identity and establish emotional connections.',
+    description: 'Creating compelling visual systems that communicate brand identity and establish emotional connections with users.',
   },
   {
     title: 'Brand-Driven Interfaces',
-    description: 'Translating brand values into cohesive digital experiences that resonate with audiences.',
+    description: 'Translating brand values into cohesive digital experiences that resonate with target audiences.',
   },
   {
     title: 'Motion & Interaction',
-    description: 'Micro-interactions and animations that guide users and bring interfaces to life with purpose.',
+    description: 'Designing micro-interactions and animations that guide users and bring interfaces to life with purpose.',
   },
   {
     title: 'Design Systems',
-    description: 'Scalable frameworks that ensure consistency and efficiency across digital products.',
+    description: 'Building scalable design frameworks that ensure consistency and efficiency across digital products.',
   },
   {
     title: 'Digital Storytelling',
-    description: 'Weaving narrative into interfaces to create memorable experiences worth exploring.',
+    description: 'Weaving narrative into interfaces to create memorable experiences that users want to explore and share.',
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Capabilities() {
           ref={titleRef}
           className="font-sans text-display font-black text-center mb-24 md:mb-32 tracking-tighter uppercase"
         >
-          What I Do
+          Capabilities
         </h2>
 
         <div
@@ -147,7 +147,7 @@ export default function Capabilities() {
         {/* Future work section */}
         <div className="mt-24 text-center border-t border-gray-200 pt-12">
           <p className="text-gray-500 text-sm uppercase tracking-[0.3em] font-medium">
-            Case studies in development
+            Selected case studies coming soon
           </p>
         </div>
       </div>

@@ -91,7 +91,7 @@ export default function Hero() {
           ref={subtitleRef}
           className="text-subheading md:text-heading-xl font-light text-gray-600 max-w-4xl mx-auto mb-16 tracking-tight leading-tight"
         >
-          Where vision becomes interface
+          Designing experiences where art meets interaction
         </p>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center">

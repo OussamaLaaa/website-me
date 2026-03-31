@@ -7,11 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
-  'Multimedia & Digital Communication',
-  'UX & Interface Design',
+  'Multimedia & Digital Communication Background',
+  'UX & Interface Design Expertise',
   'Visual Storytelling & Brand Strategy',
   'Collaborative Team Experience',
-  'Continuous Growth Mindset',
+  'Continuous Learning & Growth Mindset',
 ];
 
 export default function About() {
@@ -90,27 +90,27 @@ export default function About() {
           ref={titleRef}
           className="font-sans text-display font-black mb-20 md:mb-32 tracking-tighter uppercase text-center"
         >
-          Profile
+          About Me
         </h2>
 
         <div className="grid md:grid-cols-[1.5fr,1fr] gap-16 md:gap-24 items-start">
           {/* Content */}
           <div ref={contentRef} className="space-y-8">
             <p className="text-body-lg text-gray-600 leading-relaxed font-light">
-              UI/UX designer focused on creating digital experiences that merge aesthetic vision with functional clarity. My approach combines creative exploration with strategic thinking to craft interfaces that feel both refined and intuitive.
+              I'm a UI/UX designer with a passion for creating digital experiences that blend aesthetic vision with functional excellence. My approach combines creative exploration with strategic thinking to craft interfaces that feel both beautiful and intuitive.
             </p>
 
             <p className="text-body-lg text-gray-600 leading-relaxed font-light">
-              With a background in multimedia and digital communication, I bring a multidisciplinary lens to every project. The best designs emerge from curiosity, collaboration, and understanding the people we serve.
+              With a background in multimedia and digital communication, I bring a multidisciplinary perspective to every project. I believe the best designs emerge from curiosity, collaboration, and a deep understanding of the people we're designing for.
             </p>
 
             <p className="text-body-lg text-gray-600 leading-relaxed font-light">
-              My work spans visual design, user experience, and motion-aware interfaces. I'm drawn to projects that challenge convention—where technology becomes an invisible partner in human interaction.
+              My work spans visual design, user experience, and motion-aware interfaces. I'm particularly drawn to projects that challenge convention and push the boundaries of what digital experiences can be—where technology becomes an invisible partner in human interaction.
             </p>
 
             <div className="pt-8 border-t border-gray-200">
               <p className="text-body font-medium text-foreground leading-relaxed">
-                Currently open to freelance projects, collaborative opportunities, and full-time positions where I can contribute to meaningful digital products.
+                Currently open to freelance projects, collaborative opportunities, and full-time positions where I can contribute to building meaningful digital products.
               </p>
             </div>
           </div>

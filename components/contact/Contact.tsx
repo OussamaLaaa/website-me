@@ -66,12 +66,12 @@ export default function Contact() {
       <div ref={contentRef} className="max-w-5xl mx-auto text-center space-y-16">
         {/* Title */}
         <h2 className="font-sans text-display md:text-hero font-black tracking-tighter text-foreground glow">
-          Let's Build Something Remarkable
+          Let's Create Something Exceptional
         </h2>
 
         {/* Description */}
         <p className="text-body-lg md:text-heading-xl text-gray-600 leading-tight font-light max-w-3xl mx-auto tracking-tight">
-          Available for select projects and full-time opportunities
+          Whether you're looking for a designer for your next project, seeking a creative collaborator, or considering me for your team—I'd love to hear from you.
         </p>
 
         {/* CTA Buttons */}

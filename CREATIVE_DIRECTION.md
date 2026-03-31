@@ -9,8 +9,8 @@ A cinematic journey through 5 immersive scenes that unfold like a visual narrati
 Dark, sophisticated, atmospheric — think art gallery meets interactive film. Premium, confident, memorable. The experience should feel like entering a carefully curated space where every element has intention.
 
 ### Visual Language
-- **Color Palette**: Deep charcoal black (#0a0a0a) base with warm amber gold accent (#d4a574)
-- **Typography**: Editorial-inspired serif for display text, clean sans-serif for body
+- **Color Palette**: STRICT MONOCHROME - Pure black (#000000) and white (#ffffff) only. No colors, no gradients, no warm accents
+- **Typography**: Inter exclusively - no serifs, no editorial fonts. Inter for all text
 - **Spacing**: Generous whitespace and breathing room throughout
 - **Texture**: Subtle grain overlay for tactile quality
 - **Depth**: Layered composition with parallax and 3D elements

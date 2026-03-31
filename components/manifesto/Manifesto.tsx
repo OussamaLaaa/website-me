@@ -8,20 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const principles = [
   {
-    title: 'Form Follows Feeling',
-    description: 'Every pixel serves emotion. Every interaction builds trust. Design is not decoration—it is the invisible architecture of human connection.',
+    title: 'Art Meets Technology',
+    description: 'Every interface is a canvas. Every interaction tells a story. I blend aesthetic vision with functional precision to create digital experiences that resonate.',
   },
   {
-    title: 'Craft Over Convention',
-    description: 'Templates are a starting point, not a destination. True design challenges assumptions and creates experiences worth remembering.',
+    title: 'Design with Intention',
+    description: 'Beauty without purpose is decoration. I design with deliberate thought—where every element serves the user journey and elevates the experience.',
   },
   {
-    title: 'Motion as Language',
-    description: 'Movement guides the eye. Timing shapes perception. Animation is not ornament—it is the voice of digital space.',
+    title: 'Craft Digital Moments',
+    description: 'The best experiences feel alive. Through motion, depth, and atmosphere, I transform static screens into memorable moments people want to return to.',
   },
   {
-    title: 'Clarity Through Complexity',
-    description: 'Simplicity is not less. It is the result of removing everything that does not serve. Elegant interfaces demand rigorous thought.',
+    title: 'Empathy in Every Pixel',
+    description: 'Great design understands people. I approach every project with curiosity about the human experience, creating interfaces that feel intuitive and welcoming.',
   },
 ];
 
@@ -94,7 +94,7 @@ export default function Manifesto() {
           ref={titleRef}
           className="font-sans text-display font-black text-center mb-24 md:mb-40 tracking-tighter uppercase"
         >
-          Principles
+          Design Philosophy
         </h2>
 
         <div ref={principlesRef} className="space-y-20 md:space-y-32">
